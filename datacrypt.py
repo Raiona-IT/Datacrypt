@@ -15,7 +15,6 @@ if args.encrypt:
     for item in args.encrypt:
         files = files + ' ' + item
     outfile = 'crypt-' + args.image
-    print files
     os.system('cat ' + args.image + ' ' + files + ' > ' + outfile)
 elif args.decrypt:
     print args.decrypt
