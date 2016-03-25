@@ -14,7 +14,17 @@ if args.encrypt:
     files = ''
     for item in args.encrypt:
         files = files + ' ' + item
-    outfile = 'crypt-' + args.image
+    prefix = 'crypt-'
+    dirfiles=os.listdir(os.getcwd())
+    valid = 1
+    imgname=args.image.split('/')[::-1][0]
+    while valid == 1:
+        for dirf in dirfiles:
+            valid = 0
+            if dirf==prefix + imgname:
+                prefix = prefix + 'x-'
+                valid = 1
+    outfile = prefix + imgname
     os.system('cat ' + args.image + ' ' + files + ' > ' + outfile)
 elif args.decrypt:
     print args.decrypt
